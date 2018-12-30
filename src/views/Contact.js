@@ -29,6 +29,7 @@ export default ({ fields }) => {
                     address
                   )}`}
                   target='_blank'
+                  rel="noopener noreferrer"
                 >
                   <MapPin /> {address}
                 </a>
