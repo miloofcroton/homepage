@@ -24,7 +24,7 @@ class PostSection extends React.Component {
     }))
   }
 
-  render () {
+  render() {
     const { posts, title, showLoadMore, loadMoreTitle } = this.props
     const { limit } = this.state
 

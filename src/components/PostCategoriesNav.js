@@ -7,7 +7,7 @@ import './PostCategoriesNav.css'
 const PostCategoriesNav = ({ categories }) => (
   <div className='container'>
     <div className='PostCategoriesNav'>
-      <NavLink className='NavLink' exact to={`/blog/`}>
+      <NavLink className='NavLink' exact to={'/blog/'}>
         All
       </NavLink>
       {categories.map((category, index) => (

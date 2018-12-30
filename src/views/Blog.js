@@ -7,7 +7,7 @@ import PostSection from '../components/PostSection'
 
 import './Blog.css'
 
-export default ({
+const Blog = ({
   fields,
   posts = [],
   postCategories = [],
@@ -32,3 +32,5 @@ export default ({
     </main>
   )
 }
+
+export default Blog;

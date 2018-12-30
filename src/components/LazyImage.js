@@ -1,17 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import 'intersection-observer'
-import Observer from '@researchgate/react-intersection-observer'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import 'intersection-observer';
+import Observer from '@researchgate/react-intersection-observer';
 
-import { getImageSrc, getImageSrcset } from '../util/getImageUrl'
-import './LazyImage.css'
+import { getImageSrc, getImageSrcset } from '../util/getImageUrl';
+import './LazyImage.css';
 
-class LazyImage extends React.Component {
+class LazyImage extends Component {
   static defaultProps = {
     lazy: false,
     enableSrcset: true,
     imageSize: '300'
-  }
+  };
 
   state = {
     src: getImageSrc(
@@ -22,33 +22,33 @@ class LazyImage extends React.Component {
     dataSrc: getImageSrc(this.props.src, this.props.imageSize),
     dataSrcSet: getImageSrcset(this.props.src),
     loaded: !this.props.lazy
-  }
+  };
 
   handleIntersection = e => {
     if (e.isIntersecting) {
-      const img = new Image()
-      img.src = this.state.dataSrc
-      img.onload = () => {
-        this.setState({
-          src: this.state.dataSrc,
-          srcSet: this.state.dataSrcSet,
-          loaded: true
-        })
-      }
+      // const img = new Image();
+      // img.src = this.state.dataSrc;
+      // img.onload = () => {
+      //   this.setState({
+      //     src: this.state.dataSrc,
+      //     srcSet: this.state.dataSrcSet,
+      //     loaded: true
+      //   });
+      // };
     }
-  }
+  };
 
-  componentWillReceiveProps (nextProps) {
-    if (this.props.src === nextProps.src) return
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.src === nextProps.src) return;
     this.setState({
       src: getImageSrc(nextProps.src, '10'),
       srcSet: '',
       dataSrc: getImageSrc(nextProps.src, '300'),
       dataSrcSet: getImageSrcset(nextProps.src)
-    })
+    });
   }
 
-  render () {
+  render() {
     const { sizes, lazy, onClick, alt } = this.props
     let className = this.props.className || ''
     if (this.state.loaded) className += ' loaded'
@@ -68,7 +68,7 @@ class LazyImage extends React.Component {
           onClick={onClick}
           alt={alt}
         />
-      )
+      );
     }
 
     return (
@@ -82,12 +82,12 @@ class LazyImage extends React.Component {
           alt={alt}
         />
       </Observer>
-    )
+    );
   }
 }
 
 LazyImage.propTypes = {
   alt: PropTypes.string.isRequired
-}
+};
 
-export default LazyImage
+export default LazyImage;

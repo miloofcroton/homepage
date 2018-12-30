@@ -30,18 +30,18 @@ export default class BackgroundImage extends React.Component {
 
   handleIntersection = e => {
     if (e.isIntersecting) {
-      const img = new Image()
-      img.src = this.state.dataSrc
-      img.onload = () => {
-        this.setState({
-          src: this.state.dataSrc,
-          loaded: true
-        })
-      }
+      // const img = new Image()
+      // img.src = this.state.dataSrc
+      // img.onload = () => {
+      //   this.setState({
+      //     src: this.state.dataSrc,
+      //     loaded: true
+      //   })
+      // }
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.src === nextProps.src) return
 
     this.setState({
@@ -53,7 +53,7 @@ export default class BackgroundImage extends React.Component {
     })
   }
 
-  render () {
+  render() {
     let { className, contain, opacity, lazy, imageSize } = this.props
     let { loaded, src } = this.state
 

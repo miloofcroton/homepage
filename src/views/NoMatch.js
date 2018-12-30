@@ -10,7 +10,7 @@ const NoMatch = ({ siteUrl }) => (
       <div className='container taCenter'>
         <h1>404 - Page Not Found</h1>
         <p>
-          We can't find the page you are looking for!<br />Head back to{' '}
+          We cannot find the page you are looking for!<br />Head back to{' '}
           <a href={siteUrl}>
             {siteUrl.replace(/(^https?:\/\/)/, '').replace(/\/$/, '')}
           </a>
